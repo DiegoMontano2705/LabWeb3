@@ -1,0 +1,33 @@
+//var test = "test";
+// $(this).parent().remove   es para regresar su padre de inmediato, sevira para borrar todo el elemento
+
+
+//Funcion para agregar nuevos productos a la lista de compras
+$("#submitButton").on("click",function(event){
+    event.preventDefault();
+    var producto = $("#textoProducto").val();
+    $("#shopList").append("<li class='lis'> <p class='itemShop'>" + producto + " </p> <button type='button' class='checar'>Check</button>   <button type='button' class='del'>Delete</button> </li>");
+    console.log("Si entra");
+});
+
+//Funcion para marcar un productos ya existente en la lista de compras o desmarcar
+$("#shopList").on("click",".checar",function(event){
+    event.preventDefault();
+    if($(this).prev(".itemShop").css('text-decoration-line') === 'line-through'){
+        $(this).prev(".itemShop").css({'text-decoration-line': "none" })
+    } else {
+        $(this).prev(".itemShop").css({'text-decoration-line': "line-through" })
+    }
+
+});
+
+
+//Funcion para borrar el producto seleccionado
+$("#shopList").on("click",".del",function(event){
+    event.preventDefault();
+    $(this).parent().remove();
+});
+
+
+
+//$("#shopList
